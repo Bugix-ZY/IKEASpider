@@ -1,15 +1,16 @@
-from typing import List
+from typing import List, Set
 from bs4 import BeautifulSoup
 from collections import deque
-import requests
 from util import write_list_to_csv
+
+import requests
 
 
 class IKEASpider:
     def __init__(self, start_urls: List[str]):
         self.start_url = start_urls
 
-    def crawl(self, visited=set()):
+    def crawl(self, visited=set()) -> Set[str]:
         def is_category(url):
             return "us/en/cat/" in url
 
